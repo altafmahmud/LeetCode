@@ -19,5 +19,8 @@ int main()
     int_vec2 = {1000, 10000, 999999};
     std::cout << "Length of LCP: " << lenOfLCP.longestCommonPrefix(int_vec1, int_vec2) << '\n';
 
+    LongestHappyString happy;
+    std::cout << "Happy string: " << happy.longestDiverseString(0, 0, 7) << '\n';
+
     return 0;
 }
