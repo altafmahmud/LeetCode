@@ -24,5 +24,13 @@ int main()
 
     MinLengthAfterRemoveSubstr minLength;
     std::cout << "Minimum length: " << minLength.minLength("ABFCACDB") << '\n';
+
+    RankArrayTransform rankArrayTransform;
+    int_vec1 = {100,100,100};
+    int_vec2 = rankArrayTransform.arrayRankTransform(int_vec1);
+    std::cout << "Array rank: ";
+    std::copy(int_vec2.begin(), int_vec2.end(), std::ostream_iterator<int>(std::cout, ","));
+    std::cout << '\n';
+
     return 0;
 }
