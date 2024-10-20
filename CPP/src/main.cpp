@@ -22,5 +22,7 @@ int main()
     LongestHappyString happy;
     std::cout << "Happy string: " << happy.longestDiverseString(0, 0, 7) << '\n';
 
+    MinLengthAfterRemoveSubstr minLength;
+    std::cout << "Minimum length: " << minLength.minLength("ABFCACDB") << '\n';
     return 0;
 }
