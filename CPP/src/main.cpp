@@ -26,10 +26,16 @@ int main()
     std::cout << "Minimum length: " << minLength.minLength("ABFCACDB") << '\n';
 
     RankArrayTransform rankArrayTransform;
-    int_vec1 = {100,100,100};
+    int_vec1 = {37,12,28,9,100,56,80,5,12};
     int_vec2 = rankArrayTransform.arrayRankTransform(int_vec1);
     std::cout << "Array rank: ";
     std::copy(int_vec2.begin(), int_vec2.end(), std::ostream_iterator<int>(std::cout, ","));
+    std::cout << '\n';
+
+    UncommonWords uncommonWords;
+    std::cout << "Uncommon words: ";
+    auto strVec = uncommonWords.uncommonFromSentences("fo ly ly", "fo fo etx");
+    std::copy(strVec.begin(), strVec.end(), std::ostream_iterator<std::string>(std::cout, ","));
     std::cout << '\n';
 
     return 0;
