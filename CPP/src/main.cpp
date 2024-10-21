@@ -26,7 +26,7 @@ int main()
     std::cout << "Minimum length: " << minLength.minLength("ABFCACDB") << '\n';
 
     RankArrayTransform rankArrayTransform;
-    int_vec1 = {37,12,28,9,100,56,80,5,12};
+    int_vec1 = {37, 12, 28, 9, 100, 56, 80, 5, 12};
     int_vec2 = rankArrayTransform.arrayRankTransform(int_vec1);
     std::cout << "Array rank: ";
     std::copy(int_vec2.begin(), int_vec2.end(), std::ostream_iterator<int>(std::cout, ","));

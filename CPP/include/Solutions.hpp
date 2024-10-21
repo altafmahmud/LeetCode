@@ -25,7 +25,6 @@
 // Input: nums1 = [1,2], nums2 = [3,4]
 // Output: 2.50000
 // Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
- 
 
 // Constraints:
 
@@ -36,18 +35,21 @@
 // 1 <= m + n <= 2000
 // -106 <= nums1[i], nums2[i] <= 106
 
-class MedianTwoSortedArrays {
+class MedianTwoSortedArrays
+{
 public:
-    double findMedianSortedArrays(const std::vector<int>& nums1, const std::vector<int>& nums2) {
+    double findMedianSortedArrays(const std::vector<int> &nums1, const std::vector<int> &nums2)
+    {
         std::vector<int> result;
         result.reserve(nums1.size() + nums2.size());
         std::merge(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), std::back_inserter(result));
         std::cout << "merged array = [";
-        std::copy(result.begin(), result.end()-1, std::ostream_iterator<int>(std::cout, ","));
+        std::copy(result.begin(), result.end() - 1, std::ostream_iterator<int>(std::cout, ","));
         std::cout << result.at(result.size() - 1) << ']';
         std::cout << " and median is ";
         double median = 0.0;
-        if(result.size() % 2 == 0) {
+        if (result.size() % 2 == 0)
+        {
             const unsigned second_idx = result.size() / 2;
             const unsigned first_idx = second_idx - 1;
             const double first_val = static_cast<double>(result.at(first_idx));
@@ -55,7 +57,8 @@ public:
             median = (first_val + second_val) / 2.0;
             std::cout << "(" << result.at(first_idx) << " + " << result.at(second_idx) << ")" << " / 2 = " << median << '\n';
         }
-        else {
+        else
+        {
             const unsigned idx = result.size() / 2;
             median = result.at(idx);
             std::cout << result.at(idx) << ".\n";
@@ -81,16 +84,17 @@ public:
 // Input: strs = ["dog","racecar","car"]
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
- 
+
 // Constraints:
 
 // 1 <= strs.length <= 200
 // 0 <= strs[i].length <= 200
 // strs[i] consists of only lowercase English letters.
 
-class LongestCommonPrefix {
-    public:
-    std::string longestCommonPrefix(const std::vector<std::string>& strs)
+class LongestCommonPrefix
+{
+public:
+    std::string longestCommonPrefix(const std::vector<std::string> &strs)
     {
         std::string lcp("");
         char c = '\0';
@@ -99,10 +103,10 @@ class LongestCommonPrefix {
         {
             for (unsigned row = 0; row < strs.size(); ++row)
             {
-                if (strs[row].size() ==  col)
+                if (strs[row].size() == col)
                 {
                     cond = false;
-                    break;                    
+                    break;
                 }
                 char ch = strs[row][col];
                 c = (c == '\0') ? ch : c;
@@ -151,17 +155,18 @@ class LongestCommonPrefix {
 // Output: 0
 // Explanation: There exists no common prefix for any pair (arr1[i], arr2[j]), hence we return 0.
 // Note that common prefixes between elements of the same array do not count.
- 
+
 // Constraints:
 
 // 1 <= arr1.length, arr2.length <= 5 * 10^4
 // 1 <= arr1[i], arr2[i] <= 10^8
 
-class LengthOfLCP {
+class LengthOfLCP
+{
 public:
-    int longestCommonPrefix(const std::vector<int>& arr1, const std::vector<int>& arr2)
+    int longestCommonPrefix(const std::vector<int> &arr1, const std::vector<int> &arr2)
     {
-        for (const auto& num : arr1)
+        for (const auto &num : arr1)
         {
             generateAllPOssibleLCP(num);
         }
@@ -200,7 +205,7 @@ private:
         return insertIntoLCPMap(lcpVec.size(), lcpVec);
     }
 
-    int insertIntoLCPMap(const unsigned len, const std::vector<int>& lcpVec)
+    int insertIntoLCPMap(const unsigned len, const std::vector<int> &lcpVec)
     {
         auto count = 0;
         auto l = len;
@@ -243,7 +248,7 @@ private:
 // Input: a = 7, b = 1, c = 0
 // Output: "aabaa"
 // Explanation: It is the only correct answer in this case.
- 
+
 // Constraints:
 
 // 0 <= a, b, c <= 100
@@ -368,14 +373,14 @@ private:
 // Input: s = "ACBBD"
 // Output: 5
 // Explanation: We cannot do any operations on the string so the length remains the same.
- 
 
 // Constraints:
 
 // 1 <= s.length <= 100
 // s consists only of uppercase English letters.
 
-class MinLengthAfterRemoveSubstr {
+class MinLengthAfterRemoveSubstr
+{
 public:
     int minLength(std::string s)
     {
@@ -394,7 +399,7 @@ public:
                 s.erase(pos, 2);
             }
         } while (pos != std::string::npos);
-        
+
         return s.length();
     }
 };
@@ -409,7 +414,7 @@ public:
 // Rank is an integer starting from 1.
 // The larger the element, the larger the rank. If two elements are equal, their rank must be the same.
 // Rank should be as small as possible.
- 
+
 // Example 1:
 // Input: arr = [40,10,20,30]
 // Output: [4,1,2,3]
@@ -423,28 +428,29 @@ public:
 // Example 3:
 // Input: arr = [37,12,28,9,100,56,80,5,12]
 // Output: [5,3,4,2,8,6,7,1,3]
- 
+
 // Constraints:
 
 // 0 <= arr.length <= 10^5
 // -10^9 <= arr[i] <= 10^9
 
-class RankArrayTransform {
+class RankArrayTransform
+{
 public:
-    std::vector<int> arrayRankTransform(std::vector<int>& arr)
+    std::vector<int> arrayRankTransform(std::vector<int> &arr)
     {
-        for (const auto& elem : arr)
+        for (const auto &elem : arr)
         {
             rank.emplace(std::make_pair(elem, 0));
         }
         auto rankOrder = rank.size();
-        for (auto& [key, val] : rank)
+        for (auto &[key, val] : rank)
         {
             val = rankOrder--;
         }
         std::vector<int> rankVec;
         rankVec.reserve(arr.size());
-        for (const auto& elem : arr)
+        for (const auto &elem : arr)
         {
             rankVec.push_back(rank[elem]);
         }
@@ -461,7 +467,6 @@ private:
 // A word is uncommon if it appears exactly once in one of the sentences, and does not appear in the other sentence.
 // Given two sentences s1 and s2, return a list of all the uncommon words. You may return the answer in any order.
 
- 
 // Example 1:
 // Input: s1 = "this apple is sweet", s2 = "this apple is sour"
 // Output: ["sweet","sour"]
