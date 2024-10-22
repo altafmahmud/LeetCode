@@ -38,5 +38,11 @@ int main()
     std::copy(strVec.begin(), strVec.end(), std::ostream_iterator<std::string>(std::cout, ","));
     std::cout << '\n';
 
+    EqualSubstrInBudget equalSubstrInBudget;
+    std::cout << "Length of equal substrings in budget: " << equalSubstrInBudget.equalSubstring("pxezla", "loewbi", 25) << '\n'; // 4
+    std::cout << "Length of equal substrings in budget: " << equalSubstrInBudget.equalSubstring("abcd", "acde", 0) << '\n';      // 1
+    std::cout << "Length of equal substrings in budget: " << equalSubstrInBudget.equalSubstring("abcd", "cdef", 1) << '\n';      // 0
+    std::cout << "Length of equal substrings in budget: " << equalSubstrInBudget.equalSubstring("abcd", "bcdf", 3) << '\n';      // 3
+
     return 0;
 }
