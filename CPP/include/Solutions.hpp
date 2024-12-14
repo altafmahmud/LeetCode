@@ -615,3 +615,437 @@ public:
         return maxLen;
     }
 };
+
+// 26. Remove Duplicates from Sorted Array
+// Easy
+// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
+// The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+
+// Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+
+// - Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially.
+//   The remaining elements of nums are not important as well as the size of nums.
+// - Return k.
+
+// Custom Judge:
+
+// The judge will test your solution with the following code:
+
+// int[] nums = [...]; // Input array
+// int[] expectedNums = [...]; // The expected answer with correct length
+
+// int k = removeDuplicates(nums); // Calls your implementation
+
+// assert k == expectedNums.length;
+// for (int i = 0; i < k; i++) {
+//     assert nums[i] == expectedNums[i];
+// }
+// If all assertions pass, then your solution will be accepted.
+
+// Example 1:
+
+// Input: nums = [1,1,2]
+// Output: 2, nums = [1,2,_]
+// Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+// Example 2:
+
+// Input: nums = [0,0,1,1,1,2,2,3,3,4]
+// Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+// Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+// Constraints:
+
+// 1 <= nums.length <= 3 * 104
+// -100 <= nums[i] <= 100
+// nums is sorted in non-decreasing order.
+
+class RemDupSortedArr
+{
+public:
+    int removeDuplicates(std::vector<int> &nums)
+    {
+        std::unordered_set<int> s;
+        auto non_exist_num = nums.at(0) - 1;
+        for (auto &num : nums)
+        {
+            if (s.count(num) == 0)
+            {
+                s.insert(num);
+            }
+            else
+            {
+                num = non_exist_num;
+            }
+        }
+        nums.erase(std::remove_if(nums.begin(), nums.end(), [&non_exist_num](const auto num)
+                                  { return num == non_exist_num; }),
+                   nums.end());
+        nums.shrink_to_fit();
+        return nums.size();
+    }
+};
+
+// 27. Remove Element
+// Easy
+// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
+// The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+// Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
+
+// - Change the array nums such that the first k elements of nums contain the elements which are not equal to val.
+//   The remaining elements of nums are not important as well as the size of nums.
+// - Return k.
+
+// Custom Judge:
+
+// The judge will test your solution with the following code:
+
+// int[] nums = [...]; // Input array
+// int val = ...; // Value to remove
+// int[] expectedNums = [...]; // The expected answer with correct length.
+//                             // It is sorted with no values equaling val.
+
+// int k = removeElement(nums, val); // Calls your implementation
+
+// assert k == expectedNums.length;
+// sort(nums, 0, k); // Sort the first k elements of nums
+// for (int i = 0; i < actualLength; i++) {
+//     assert nums[i] == expectedNums[i];
+// }
+// If all assertions pass, then your solution will be accepted.
+
+// Example 1:
+
+// Input: nums = [3,2,2,3], val = 3
+// Output: 2, nums = [2,2,_,_]
+// Explanation: Your function should return k = 2, with the first two elements of nums being 2.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+// Example 2:
+
+// Input: nums = [0,1,2,2,3,0,4,2], val = 2
+// Output: 5, nums = [0,1,4,0,3,_,_,_]
+// Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.
+// Note that the five elements can be returned in any order.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+// Constraints:
+// 0 <= nums.length <= 100
+// 0 <= nums[i] <= 50
+// 0 <= val <= 100
+
+class RemElement
+{
+public:
+    int removeElement(std::vector<int> &nums, int val)
+    {
+        auto jdx = 0;
+        for (auto idx = 0; idx < nums.size(); ++idx)
+        {
+            if (nums[idx] == val)
+            {
+                continue;
+            }
+            nums[jdx] = nums[idx];
+            ++jdx;
+        }
+        return jdx;
+    }
+};
+
+// 29. Divide Two Integers
+// Medium
+// Given two integers dividend and divisor, divide two integers without using multiplication, division, and mod operator.
+
+// The integer division should truncate toward zero, which means losing its fractional part. For example, 8.345 would be truncated to 8, and -2.7335 would be truncated to -2.
+
+// Return the quotient after dividing dividend by divisor.
+
+// Note: Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: [−2^31, 2^31 − 1].
+// For this problem, if the quotient is strictly greater than 2^31 - 1, then return 2^31 - 1, and if the quotient is strictly less than -2^31, then return -2^31.
+
+// Example 1:
+
+// Input: dividend = 10, divisor = 3
+// Output: 3
+// Explanation: 10/3 = 3.33333.. which is truncated to 3.
+
+// Example 2:
+
+// Input: dividend = 7, divisor = -3
+// Output: -2
+// Explanation: 7/-3 = -2.33333.. which is truncated to -2.
+
+// Constraints:
+
+// > -231 <= dividend, divisor <= 231 - 1
+// > divisor != 0
+
+class DivideTwoInt
+{
+public:
+    int divide(int dividend, int divisor)
+    {
+        if (dividend == 0)
+        {
+            return 0;
+        }
+        const auto min_32 = std::numeric_limits<int32_t>::min();
+        const auto max_32 = std::numeric_limits<int32_t>::max();
+        auto negative = (dividend < 0) ^ (divisor < 0);
+        int32_t quotient = 0;
+        unsigned abs_dividend = (dividend < 0) ? std::labs(dividend) : dividend;
+        unsigned abs_divisor = (divisor < 0) ? std::labs(divisor) : divisor;
+        if (abs_dividend < abs_divisor)
+        {
+            return 0;
+        }
+        if (abs_divisor == 1)
+        {
+            if (negative)
+            {
+                return (dividend < 0) ? dividend : -dividend;
+            }
+            else if (dividend < 0)
+            {
+                if (dividend == min_32)
+                {
+                    return max_32;
+                }
+                return static_cast<int32_t>(abs_dividend);
+            }
+        }
+        if (abs_dividend == abs_divisor)
+        {
+            return (negative) ? -1 : 1;
+        }
+        while (abs_dividend >= abs_divisor)
+        {
+            unsigned temp_abs_divisor = abs_divisor;
+            unsigned multiple = 1;
+            while (abs_dividend >= (temp_abs_divisor << 1))
+            {
+                temp_abs_divisor <<= 1;
+                multiple <<= 1;
+                if (abs_dividend == temp_abs_divisor)
+                {
+                    break;
+                }
+            }
+            abs_dividend -= temp_abs_divisor;
+            quotient += multiple;
+        }
+        return (negative) ? -quotient : quotient;
+    }
+};
+
+// 33. Search in Rotated Sorted Array
+// Medium
+// There is an integer array nums sorted in ascending order (with distinct values).
+
+// Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that
+// the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+// For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+// Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+// You must write an algorithm with O(log n) runtime complexity.
+
+// Example 1:
+
+// Input: nums = [4,5,6,7,0,1,2], target = 0
+// Output: 4
+// Example 2:
+
+// Input: nums = [4,5,6,7,0,1,2], target = 3
+// Output: -1
+// Example 3:
+
+// Input: nums = [1], target = 0
+// Output: -1
+
+// Constraints:
+
+// > 1 <= nums.length <= 5000
+// > -10^4 <= nums[i] <= 10^4
+// > All values of nums are unique.
+// > nums is an ascending array that is possibly rotated.
+// > -10^4 <= target <= 10^4
+
+class SearchInRotatedSortedArr
+{
+public:
+    int search(std::vector<int> &nums, int target)
+    {
+        if (isPivoted(nums))
+        {
+            if (nums[0] == target)
+            {
+                return 0;
+            }
+            const auto pivot_idx = getPivotIndex(nums);
+            return (target < nums[0]) ? BSearch(nums, pivot_idx, nums.size() - 1, target) : BSearch(nums, 0, pivot_idx - 1, target);
+        }
+        return BSearch(nums, 0, nums.size() - 1, target);
+    }
+
+private:
+    bool isPivoted(const std::vector<int> &nums) const
+    {
+        const auto len = nums.size();
+        return nums[len - 1] < nums[0];
+    }
+
+    int getPivotIndex(const std::vector<int> &nums)
+    {
+        int left = 0;
+        int right = nums.size() - 1;
+        int mid = left + (right - left) / 2;
+        while (left < right)
+        {
+            if (nums[mid] > nums[right])
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                if (nums[mid - 1] < nums[mid])
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            mid = left + (right - left) / 2;
+        }
+        return mid;
+    }
+
+    int BSearch(const std::vector<int> &nums, int left, int right, int target)
+    {
+        while (left <= right)
+        {
+            if (left == right)
+            {
+                return (nums[left] == target) ? left : -1;
+            }
+            auto mid = left + (right - left) / 2;
+            if (nums[mid] == target)
+            {
+                return mid;
+            }
+            (nums[mid] < target) ? left = mid + 1 : right = mid - 1;
+        }
+        return -1;
+    }
+};
+
+// 81. Search in Rotated Sorted Array II
+// Medium
+// There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
+
+// Before being passed to your function, nums is rotated at an unknown pivot index k (0 <= k < nums.length) such that the resulting array is
+// [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+// For example, [0,1,2,4,4,4,5,6,6,7] might be rotated at pivot index 5 and become [4,5,6,6,7,0,1,2,4,4].
+
+// Given the array nums after the rotation and an integer target, return true if target is in nums, or false if it is not in nums.
+
+// You must decrease the overall operation steps as much as possible.
+
+// Example 1:
+
+// Input: nums = [2,5,6,0,0,1,2], target = 0
+// Output: true
+
+// Example 2:
+
+// Input: nums = [2,5,6,0,0,1,2], target = 3
+// Output: false
+
+// Constraints:
+
+// > 1 <= nums.length <= 5000
+// > -10^4 <= nums[i] <= 10^4
+// > nums is guaranteed to be rotated at some pivot.
+// > -10^4 <= target <= 10^4
+
+// Follow up: This problem is similar to Search in Rotated Sorted Array, but nums may contain duplicates. Would this affect the runtime complexity? How and why?
+
+// This solution is done from editorial
+
+class SearchInRotatedSortedArrII
+{
+public:
+    bool search(const std::vector<int> &nums, int target)
+    {
+        return BSearch(nums, 0, nums.size() - 1, target);
+    }
+
+private:
+    bool BSearch(const std::vector<int> &nums, int left, int right, int target)
+    {
+        while (left <= right)
+        {
+            if (left == right)
+            {
+                return (nums[left] == target) ? true : false;
+            }
+            auto mid = left + (right - left) / 2;
+            if (nums[mid] == target)
+            {
+                return true;
+            }
+            if (!isBSearchUseful(nums, left, mid))
+            {
+                ++left;
+                continue;
+            }
+            
+            // which array does pivot belongs to
+            const auto pivotInArr = existInFirstPortion(nums, left, nums[mid]);
+            // which array does target belongs to
+            const auto targetInArr = existInFirstPortion(nums, left, target);
+
+            if (pivotInArr ^ targetInArr) // If pivot and target exist in different sorted arrays
+            {
+                // if pivot in this first array portion and target in other portion then consider the other portion
+                // if target in this first array portion and pivot in other portion then consider the first portion
+                // Follow the target
+                (pivotInArr) ? left = mid + 1 : right = mid - 1;
+            }
+            else
+            {
+                // If pivot and target exist in same sorted array
+                (nums[mid] < target) ? left = mid + 1 : right = mid - 1;
+            }
+            // if the left position hits the target in any chance
+            if (nums[left] == target)
+            {
+                return true;
+            }
+            // if the right position hits the target in any chance
+            if (nums[right] == target)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // returns true if we can reduce the search space in current binary search space    
+    bool isBSearchUseful(const std::vector<int>& nums, const int left, const int mid) const
+    {
+        return nums[left] != nums[mid];
+    }
+
+    // returns true if element exists in first array, false if it exists in second
+    bool existInFirstPortion(const std::vector<int>& nums, const int left, const int element) const
+    {
+        return nums[left] <= element;
+    }
+};
