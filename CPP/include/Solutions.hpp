@@ -1005,7 +1005,7 @@ private:
                 ++left;
                 continue;
             }
-            
+
             // which array does pivot belongs to
             const auto pivotInArr = existInFirstPortion(nums, left, nums[mid]);
             // which array does target belongs to
@@ -1037,15 +1037,204 @@ private:
         return false;
     }
 
-    // returns true if we can reduce the search space in current binary search space    
-    bool isBSearchUseful(const std::vector<int>& nums, const int left, const int mid) const
+    // returns true if we can reduce the search space in current binary search space
+    bool isBSearchUseful(const std::vector<int> &nums, const int left, const int mid) const
     {
         return nums[left] != nums[mid];
     }
 
     // returns true if element exists in first array, false if it exists in second
-    bool existInFirstPortion(const std::vector<int>& nums, const int left, const int element) const
+    bool existInFirstPortion(const std::vector<int> &nums, const int left, const int element) const
     {
         return nums[left] <= element;
+    }
+};
+
+// 34. Find First and Last Position of Element in Sorted Array
+
+// Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+// If target is not found in the array, return [-1, -1].
+
+// You must write an algorithm with O(log n) runtime complexity.
+
+// Example 1:
+
+// Input: nums = [5,7,7,8,8,10], target = 8
+// Output: [3,4]
+// Example 2:
+
+// Input: nums = [5,7,7,8,8,10], target = 6
+// Output: [-1,-1]
+// Example 3:
+
+// Input: nums = [], target = 0
+// Output: [-1,-1]
+
+// Constraints:
+
+// > 0 <= nums.length <= 10^5
+// > -10^9 <= nums[i] <= 10^9
+// > nums is a non-decreasing array.
+// > -10^9 <= target <= 10^9
+
+class FindFirstLastPosOfElemInSortedArray
+{
+public:
+    std::vector<int> searchRange(std::vector<int> &nums, int target)
+    {
+        res = {-1, -1};
+        if (nums.empty())
+        {
+            return res;
+        }
+        searchReceursively(nums, 0, nums.size() - 1, target);
+        return res;
+    }
+
+private:
+    int BSearch(const std::vector<int> &nums, const int start, const int end, const int target)
+    {
+        auto left = start;
+        auto right = end;
+        while (left <= right)
+        {
+            if (left == right)
+            {
+                return (nums[left] == target) ? left : -1;
+            }
+            if (nums[left] == target)
+            {
+                return left;
+            }
+            if (nums[right] == target)
+            {
+                return right;
+            }
+            auto mid = left + (right - left) / 2;
+            if (nums[mid] == target)
+            {
+                return mid;
+            }
+            (nums[mid] > target) ? right = mid - 1 : left = mid + 1;
+        }
+        return -1;
+    }
+
+    void searchReceursively(const std::vector<int> &nums, const int start, const int end, const int target)
+    {
+        if (nums[start] == target && nums[end] == target)
+        {
+            res[0] = (res[0] < 0 || start < res[0]) ? start : res[0];
+            res[1] = (res[1] < 0 || end > res[1]) ? end : res[1];
+            return;
+        }
+        if (end - start == 0)
+        {
+            return;
+        }
+        const auto idx = BSearch(nums, start, end, target);
+        if (idx < 0)
+        {
+            return;
+        }
+        res[0] = (res[0] < 0 || idx < res[0]) ? idx : res[0];
+        res[1] = (res[1] < 0 || idx > res[1]) ? idx : res[1];
+        if (idx > 0)
+        {
+            searchReceursively(nums, 0, idx - 1, target);
+        }
+        if (idx < end)
+        {
+            searchReceursively(nums, idx + 1, end, target);
+        }
+    }
+
+    std::vector<int> res;
+};
+
+// 2055. Plates Between Candles
+
+// There is a long table with a line of plates and candles arranged on top of it. You are given a 0-indexed string s consisting of characters '*' and '|' only,
+// where a '*' represents a plate and a '|' represents a candle.
+
+// You are also given a 0-indexed 2D integer array queries where queries[i] = [lefti, righti] denotes the substring s[lefti...righti] (inclusive).
+// For each query, you need to find the number of plates between candles that are in the substring. A plate is considered between candles if there is at least one candle
+// to its left and at least one candle to its right in the substring.
+
+// For example, s = "||**||**|*", and a query [3, 8] denotes the substring "*||**|". The number of plates between candles in this substring is 2, as each of the
+// two plates has at least one candle in the substring to its left and right.
+
+// Return an integer array answer where answer[i] is the answer to the ith query.
+
+// Example 1:
+
+// Input: s = "**|**|***|", queries = [[2,5],[5,9]]
+// Output: [2,3]
+// Explanation:
+// - queries[0] has two plates between candles.
+// - queries[1] has three plates between candles.
+// Example 2:
+
+// Input: s = "***|**|*****|**||**|*", queries = [[1,17],[4,5],[14,17],[5,11],[15,16]]
+// Output: [9,0,0,0,0]
+// Explanation:
+// - queries[0] has nine plates between candles.
+// - The other queries have zero plates between candles.
+
+// Constraints:
+
+// > 3 <= s.length <= 10^5
+// > s consists of '*' and '|' characters.
+// > 1 <= queries.length <= 10^5
+// > queries[i].length == 2
+// > 0 <= lefti <= righti < s.length
+
+class PlatesBetweenCandles
+{
+public:
+    std::vector<int> platesBetweenCandles(std::string s, std::vector<std::vector<int>> &queries)
+    {
+        std::map<int, int> candleMap;
+        std::vector<int> platesInBetween;
+        for (auto idx = 0, count = 0; idx < s.length(); ++idx)
+        {
+            if (s[idx] == '|')
+            {
+                candleMap.emplace(std::make_pair(idx, ++count));
+            }
+        }
+        for (const auto &query : queries)
+        {
+            const auto lower = query[0];
+            const auto upper = query[1];
+            if ((upper - lower) < 2)
+            {
+                platesInBetween.push_back(0);
+                continue;
+            }
+            auto itr_lower = candleMap.lower_bound(lower);
+            if (itr_lower == candleMap.end())
+            {
+                platesInBetween.push_back(0);
+                continue;
+            }
+            auto itr_upper = candleMap.upper_bound(upper);
+            if (itr_upper == itr_lower)
+            {
+                platesInBetween.push_back(0);
+                continue;
+            }
+            --itr_upper; // since upper_bound gives the entry key > value
+            if (itr_upper == itr_lower)
+            {
+                platesInBetween.push_back(0);
+                continue;
+            }
+            const auto candles = itr_upper->second - itr_lower->second - 1;
+            const auto plates = itr_upper->first - itr_lower->first - 1 - candles;
+            (plates >= 0) ? platesInBetween.push_back(plates) : platesInBetween.push_back(0);
+        }
+        return platesInBetween;
     }
 };
