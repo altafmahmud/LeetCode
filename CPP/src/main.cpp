@@ -1,4 +1,5 @@
 #include "Solutions.hpp"
+#include "3000.hpp"
 
 int main()
 {
@@ -168,10 +169,11 @@ int main()
     plates = pbc.platesBetweenCandles(tableTop, queries);
     std::copy(plates.begin(), plates.end(), std::ostream_iterator<int>(std::cout, ","));
 
-    std::cout << "\n\n" << std::boolalpha;
+    std::cout << "\n\n"
+              << std::boolalpha;
     CanMakePaliFrmSubstr can_pali;
     std::string s("abcda");
-    queries = {{3,3,0},{1,2,0},{0,3,1},{0,3,2},{0,4,1}};
+    queries = {{3, 3, 0}, {1, 2, 0}, {0, 3, 1}, {0, 3, 2}, {0, 4, 1}};
     auto bool_vec = can_pali.canMakePaliQueries(s, queries);
     for (const auto b : bool_vec)
     {
@@ -186,5 +188,16 @@ int main()
         std::cout << b << ',';
     }
     std::cout << std::noboolalpha << '\n';
+
+    {
+        std::cout << '\n';
+        MaxAreaLongestDiagonalRectangle maldr;
+        std::vector<std::vector<int>> dims = {{9, 3}, {8, 6}};
+        std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';
+        dims = {{3, 4}, {4, 3}};
+        std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';
+        dims = {{10, 3}, {5, 9}, {8, 3}};
+        std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';        
+    }
     return 0;
 }
