@@ -1282,6 +1282,8 @@ public:
 // > 0 <= ki <= s.length
 // > s consists of lowercase English letters.
 
+// This solution is done by following other corresponding solutions due to Time Limit Exceeded problem
+
 class CanMakePaliFrmSubstr
 {
 public:
@@ -1292,17 +1294,12 @@ public:
         std::vector<std::array<int, 26>> prefix_count;
         prefix_count.reserve(s.size() + 1);
         prefix_count.push_back(count_arr);
-        startTimer();
         for (auto idx = 0; idx < s.size(); ++idx)
         {
             const auto &ch = s[idx];
             ++count_arr[ch - 'a'];
             prefix_count.push_back(count_arr);
         }
-        stopTimer();
-        auto ms = calculateDuration();
-        std::cout << "String length: " << s.length() << ", time taken to calculate prefix count: " << helper.formatMsToString(ms) << '\n';
-        startTimer();
         for (const auto &query : queries)
         {
             if ((query[1] - query[0]) == 0)
@@ -1341,44 +1338,7 @@ public:
             num_odd -= (sum % 2 == 0) ? 0 : 1;
             res.push_back(num_odd <= 2 * query[2]);
         }
-        stopTimer();
-        ms = calculateDuration();
-        std::cout << "Time taken to process the queries: " << helper.formatMsToString(ms) << '\n';
         return res;
     }
 
-private:
-    void startTimer()
-    {
-        start = std::chrono::high_resolution_clock::now();
-    }
-
-    void stopTimer()
-    {
-        finish = std::chrono::high_resolution_clock::now();
-    }
-
-    std::chrono::milliseconds calculateDuration()
-    {
-        duration = finish - start;
-        return std::chrono::duration_cast<std::chrono::milliseconds>(duration);
-    }
-
-    void printVector(const std::vector<int> &vec)
-    {
-        std::cout << '[';
-        auto count = 0;
-        for (const auto n : vec)
-        {
-            std::cout << n;
-            if (++count < vec.size() - 1)
-            {
-                std::cout << ',';
-            }
-        }
-        std::cout << ']';
-    }
-
-    std::chrono::high_resolution_clock::time_point start, finish;
-    std::chrono::high_resolution_clock::duration duration;
 };
