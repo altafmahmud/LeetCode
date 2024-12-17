@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FormatTimeDuration.hpp"
+#include "Utility.hpp"
 
 #include <iostream>
 #include <vector>
@@ -17,7 +17,7 @@
 #include <numeric>
 #include <chrono>
 
-Helper helper;
+Utility util;
 
 // 4. Median of Two Sorted Arrays
 // Difficulty level: Hard

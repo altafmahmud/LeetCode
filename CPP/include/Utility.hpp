@@ -3,7 +3,7 @@
 #include <chrono>
 #include <sstream>
 
-class Helper
+class Utility
 {
 public:
     std::string formatMsToString(std::chrono::milliseconds ms)
