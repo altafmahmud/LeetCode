@@ -1,23 +1,28 @@
 #include "Solutions.hpp"
+#include "4.hpp"
+#include "14.hpp"
 #include "3000.hpp"
+#include "3043.hpp"
+#include "515.hpp"
+#include "167.hpp"
 
 int main()
 {
-    MedianTwoSortedArrays med;
-    std::vector<int> int_vec1 = {10, 20, 30, 40, 50};
-    std::vector<int> int_vec2 = {5, 15, 25, 35, 45};
-    const auto median = med.findMedianSortedArrays(int_vec1, int_vec2);
-    std::cout << "Median: " << median << '\n';
+    {
+        MedianTwoSortedArrays med;
+        std::vector<int> int_vec1 = {10, 20, 30, 40, 50};
+        std::vector<int> int_vec2 = {5, 15, 25, 35, 45};
+        const auto median = med.findMedianSortedArrays(int_vec1, int_vec2);
+        std::cout << "Median: " << median << '\n';
+    }
 
     LongestCommonPrefix lcp;
     std::vector<std::string> str_vec = {"aabbbc", "aabdc", "aabbbd"};
     std::cout << "LCP: " << lcp.longestCommonPrefix(str_vec) << '\n';
 
     LengthOfLCP lenOfLCP;
-    int_vec1.clear();
-    int_vec2.clear();
-    int_vec1 = {1, 10, 100, 1000, 99999};
-    int_vec2 = {1000, 10000, 999999};
+    std::vector<int> int_vec1 = {1, 10, 100, 1000, 99999};
+    std::vector<int> int_vec2 = {1000, 10000, 999999};
     std::cout << "Length of LCP: " << lenOfLCP.longestCommonPrefix(int_vec1, int_vec2) << '\n';
 
     LongestHappyString happy;
@@ -197,7 +202,31 @@ int main()
         dims = {{3, 4}, {4, 3}};
         std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';
         dims = {{10, 3}, {5, 9}, {8, 3}};
-        std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';        
+        std::cout << maldr.areaOfMaxDiagonal(dims) << '\n';
+    }
+
+    {
+        std::cout << "\nProblem: 515\n";
+        LargestValueInEachRowBTree largestValEachRow;
+        std::vector<std::string> str_vec = {"1", "3", "2", "5", "3", "null", "9"};
+        auto root = largestValEachRow.buildTree(str_vec);
+        auto max_vec = largestValEachRow.largestValues(root);
+        std::copy(max_vec.begin(), max_vec.end(), std::ostream_iterator<int>(std::cout, ","));
+        std::cout << '\n';
+        str_vec = {"1", "2", "3"};
+        root = largestValEachRow.buildTree(str_vec);
+        max_vec = largestValEachRow.largestValues(root);
+        std::copy(max_vec.begin(), max_vec.end(), std::ostream_iterator<int>(std::cout, ","));
+    }
+
+    {
+        std::cout << "\nProblem: 167\n";
+        TwoSumII twoSum2;
+        std::vector<int> int_vec = {2, 7, 11, 15};
+        auto target = 9;
+        auto output = twoSum2.twoSum(int_vec, target);
+        std::copy(output.begin(), output.end(), std::ostream_iterator<int>(std::cout, ","));
+        std::cout << '\n';
     }
     return 0;
 }
