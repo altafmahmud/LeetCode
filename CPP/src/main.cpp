@@ -1,4 +1,4 @@
-#include "AllSolutions.hpp"
+#include "AllSolutionHeaders.hpp"
 
 int main()
 {
