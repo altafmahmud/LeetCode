@@ -265,5 +265,41 @@ int main()
         std::copy(output.begin(), output.end(), std::ostream_iterator<int>(std::cout, ","));
         std::cout << "\n\n";
     }
+
+    {
+        std::cout << "Solution 15:\n";
+        ThreeSum threeSum;
+        std::vector<int> nums = {-1, 0, 1, 2, -1, -4};
+        auto res_vec = threeSum.threeSum(nums);
+        for (const auto &v : res_vec)
+        {
+            std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, ","));
+            std::cout << '\n';
+        }
+        nums = {0, 1, 1};
+        res_vec = threeSum.threeSum(nums);
+        for (const auto &v : res_vec)
+        {
+            std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, ","));
+            std::cout << '\n';
+        }
+        std::cout << '\n';
+        nums = {0, 0, 0, 0, 0, 0, 0, 0};
+        res_vec = threeSum.threeSum(nums);
+        for (const auto &v : res_vec)
+        {
+            std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, ","));
+            std::cout << '\n';
+        }
+        std::cout << '\n';
+        nums = {-2, 0, 1, 1, 2};
+        res_vec = threeSum.threeSum(nums);
+        for (const auto &v : res_vec)
+        {
+            std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, ","));
+            std::cout << '\n';
+        }
+        std::cout << '\n';
+    }
     return 0;
 }
