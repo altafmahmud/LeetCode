@@ -301,5 +301,63 @@ int main()
         }
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 2:\n";
+        AddTwoNum addTowSum;
+        std::vector<int> int_vec1 = {2, 4, 3};
+        auto list1 = addTowSum.buildList(int_vec1);
+        std::cout << "List 1:\n";
+        addTowSum.printList(list1);
+        std::cout << '\n';
+        std::vector<int> int_vec2 = {5, 6, 4};
+        auto list2 = addTowSum.buildList(int_vec2);
+        std::cout << "List 2:\n";
+        addTowSum.printList(list2);
+        std::cout << '\n';
+        auto res_list = addTowSum.addTwoNumbers(list1, list2);
+        std::cout << "Result list:\n";
+        addTowSum.printList(res_list);
+        std::cout << '\n';
+        addTowSum.clearList(list1);
+        addTowSum.clearList(list2);
+        addTowSum.clearList(res_list);
+
+        int_vec1 = {9, 9, 9, 9, 9, 9, 9};
+        list1 = addTowSum.buildList(int_vec1);
+        std::cout << "List 1:\n";
+        addTowSum.printList(list1);
+        std::cout << '\n';
+        int_vec2 = {9, 9, 9, 9};
+        list2 = addTowSum.buildList(int_vec2);
+        std::cout << "List 2:\n";
+        addTowSum.printList(list2);
+        std::cout << '\n';
+        res_list = addTowSum.addTwoNumbers(list1, list2);
+        std::cout << "Result list:\n";
+        addTowSum.printList(res_list);
+        std::cout << '\n';
+        addTowSum.clearList(list1);
+        addTowSum.clearList(list2);
+        addTowSum.clearList(res_list);
+
+        int_vec1 = {0};
+        list1 = addTowSum.buildList(int_vec1);
+        std::cout << "List 1:\n";
+        addTowSum.printList(list1);
+        std::cout << '\n';
+        int_vec2 = {0};
+        list2 = addTowSum.buildList(int_vec2);
+        std::cout << "List 2:\n";
+        addTowSum.printList(list2);
+        std::cout << '\n';
+        res_list = addTowSum.addTwoNumbers(list1, list2);
+        std::cout << "Result list:\n";
+        addTowSum.printList(res_list);
+        std::cout << '\n';
+        addTowSum.clearList(list1);
+        addTowSum.clearList(list2);
+        addTowSum.clearList(res_list);        
+    }
     return 0;
 }
