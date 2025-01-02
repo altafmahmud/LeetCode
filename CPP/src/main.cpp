@@ -357,7 +357,24 @@ int main()
         std::cout << '\n';
         addTowSum.clearList(list1);
         addTowSum.clearList(list2);
-        addTowSum.clearList(res_list);        
+        addTowSum.clearList(res_list);
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 3:\n";
+        LongestSubstrWithoutRepChar longestSubstrWithoutRepChar;
+        std::string s = "abcabcbb";
+        std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
+        s = "bbbbb";
+        std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
+        s = "pwwkew";
+        std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
+        s = "";
+        std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
+        s = "dvdf";
+        std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
+        std::cout << '\n';
     }
     return 0;
 }
