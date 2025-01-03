@@ -376,5 +376,17 @@ int main()
         std::cout << longestSubstrWithoutRepChar.lengthOfLongestSubstring(s) << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 16:\n";
+        ThreeSumClosest threeSumClosest;
+        std::vector<int> int_vec = {-1, 2, 1, -4};
+        std::cout << threeSumClosest.threeSumClosest(int_vec, 1) << '\n';
+        int_vec = {0, 0, 0};
+        std::cout << threeSumClosest.threeSumClosest(int_vec, 1) << '\n';
+        int_vec = {-1000, -1000, -1000};
+        std::cout << threeSumClosest.threeSumClosest(int_vec, 10000) << '\n';
+        std::cout << '\n';
+    }
     return 0;
 }
