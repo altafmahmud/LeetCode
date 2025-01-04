@@ -31,13 +31,15 @@
 #include <cmath>
 #include <limits>
 
+constexpr int maxDiff = std::numeric_limits<int>::max();
+
 class ThreeSumClosest
 {
 public:
     int threeSumClosest(std::vector<int> &nums, int target)
     {
         auto three_sum_closest = 0;
-        auto diff = higestNum;
+        auto diff = maxDiff;
         std::sort(nums.begin(), nums.end());
         for (auto idx = 0; idx < nums.size() - 2; ++idx)
         {
@@ -58,7 +60,7 @@ private:
         auto idx = startIdx;
         auto jdx = nums.size() - 1;
         auto closest_sum = 0;
-        int diff = higestNum;
+        int diff = maxDiff;
         while (idx < jdx)
         {
             auto sum = nums[idx] + nums[jdx];
@@ -77,6 +79,4 @@ private:
         }
         return closest_sum;
     }
-
-    const int higestNum = std::numeric_limits<int>::max();
 };

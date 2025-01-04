@@ -388,5 +388,15 @@ int main()
         std::cout << threeSumClosest.threeSumClosest(int_vec, 10000) << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 5:\n";
+        LongestPalindromicSubstr lps;
+        std::string str = "babad";
+        std::cout << lps.longestPalindrome(str) << '\n';
+        str = "cbbd";
+        std::cout << lps.longestPalindrome(str) << '\n';
+        std::cout << '\n';
+    }
     return 0;
 }
