@@ -398,5 +398,19 @@ int main()
         std::cout << lps.longestPalindrome(str) << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 214:\n";
+        ShortestPalindrome shortestPalindrome;
+        std::string s = "aacecaaa";
+        std::cout << shortestPalindrome.shortestPalindrome(s) << '\n';
+        s = "abcd";
+        std::cout << shortestPalindrome.shortestPalindrome(s) << '\n';
+        s = "adcba";
+        std::cout << shortestPalindrome.shortestPalindrome(s) << '\n';
+        s = "aababababababa";
+        std::cout << shortestPalindrome.shortestPalindrome(s) << '\n';
+        std::cout << '\n';
+    }
     return 0;
 }
