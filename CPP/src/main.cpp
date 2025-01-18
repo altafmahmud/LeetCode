@@ -412,5 +412,49 @@ int main()
         std::cout << shortestPalindrome.shortestPalindrome(s) << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 259:\n";
+        ThreeSumSmaller threeSumSmaller;
+        std::vector<int> int_vec = {-2, 0, 1, 3};
+        std::cout << threeSumSmaller.threeSumSmaller(int_vec, 2) << '\n';
+        int_vec = {0};
+        std::cout << threeSumSmaller.threeSumSmaller(int_vec, 0) << '\n';
+        int_vec.clear();
+        std::cout << threeSumSmaller.threeSumSmaller(int_vec, 0) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 516:\n";
+        LongestPalindromicSubsequenceImproved lps;
+        std::string s = "bbbab";
+        std::cout << lps.longestPalindromeSubseq(s) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 1143:\n";
+        LongestCommonSubsequenceNew lcs;
+        std::string text1 = "abcde";
+        std::string text2 = "ace";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        text1 = "abc";
+        text2 = "abc";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        text1 = "abc";
+        text2 = "def";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        text1 = "abcd";
+        text2 = "dbca";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        text1 = "bsbininm";
+        text2 = "jmjkbkjkv";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        text1 = "bbbm";
+        text2 = "mkb";
+        std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
+        std::cout << '\n';
+    }
     return 0;
 }
