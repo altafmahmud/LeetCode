@@ -456,5 +456,23 @@ int main()
         std::cout << lcs.longestCommonSubsequence(text1, text2) << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 22:\n";
+        GenerateParentheses gp;
+        const auto& combinations = gp.generateParenthesis(2);
+        std::copy(combinations.begin(), combinations.end(), std::ostream_iterator<std::string>(std::cout, " "));
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 11:\n";
+        ContainerMostWater cmw;
+        auto area = cmw.maxArea({1, 1});
+        std::cout << area << '\n';
+        area = cmw.maxArea({1, 8, 6, 2, 5, 4, 8, 3, 7});
+        std::cout << area << '\n';
+        std::cout << '\n';
+    }
     return 0;
 }
