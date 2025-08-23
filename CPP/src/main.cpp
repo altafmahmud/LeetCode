@@ -474,5 +474,113 @@ int main()
         std::cout << area << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 7:\n";
+        ReverseInteger rev_int;
+        std::cout << rev_int.reverse(123) << '\n';
+        std::cout << rev_int.reverse(-123) << '\n';
+        std::cout << rev_int.reverse(120) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 1:\n";
+        TwoSum two_sum;
+        Utility utl;
+        std::vector<int> v = {2, 7, 11, 15};
+        int target = 9;
+        auto res_vec = two_sum.twoSum(v, target);
+        utl.printVecWithDelim<int>(res_vec, '[', ']');
+        two_sum.clearRes();
+        v = {3, 2, 4};
+        target = 6;
+        res_vec = two_sum.twoSum(v, target);
+        utl.printVecWithDelim<int>(res_vec, '[', ']');
+        two_sum.clearRes();
+        v = {3, 3};
+        target = 6;
+        res_vec = two_sum.twoSum(v, target);
+        utl.printVecWithDelim<int>(res_vec, '[', ']');
+        two_sum.clearRes();
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 18:\n";
+        KSum ksum;
+        Utility utl;
+        std::vector<int> v = {2, 7, 11, 15};
+        int target = 9;
+        auto res_vec = ksum.ksum(v, 2, target);
+        std::cout << "Case 1:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {1, 0, -1, 0, -2, 2};
+        target = 0;
+        res_vec = ksum.ksum(v, 4, target);
+        std::cout << "Case 2:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {0, 0, 0, 0};
+        target = 0;
+        res_vec = ksum.ksum(v, 4, target);
+        std::cout << "Case 3:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {0};
+        target = 0;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 4:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {-2, -1, -1, 1, 1, 2, 2};
+        target = 0;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 5:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {-1, 0, 1, 2, -1, -4};
+        target = -1;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 6:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {-5, -4, -3, -2, -1, 0, 0, 1, 2, 3, 4, 5};
+        target = 0;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 7:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        v = {1000000000, 1000000000, 1000000000, 1000000000};
+        target = 0;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 8:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+        target = -294967296;
+        res_vec = ksum.fourSum(v, target);
+        std::cout << "Case 9:\n";
+        for (const auto& vec : res_vec) {
+            utl.printVecWithDelim<int>(vec, '[', ']');
+            std::cout << '\n';
+        }
+    }
     return 0;
 }
