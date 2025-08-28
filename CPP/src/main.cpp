@@ -582,5 +582,91 @@ int main()
             std::cout << '\n';
         }
     }
+
+    {
+        std::cout << "Solution 61:\n";
+        RotateList rotate_list;
+        // add 10 nodes
+        for (auto n = 0; n < 2; ++n) {
+            rotate_list.appendNode(n);
+        }
+        std::cout << "Current list:\n";
+        auto curr_list = rotate_list.getList();
+        std::cout << curr_list << '\n';
+        // prepend
+        rotate_list.prependNode(-1);
+        std::cout << "Current list:\n";
+        curr_list = rotate_list.getList();
+        std::cout << curr_list << '\n';        
+        rotate_list.deleteList();
+        curr_list = rotate_list.getList();
+        std::cout << "Current list:\n";
+        std::cout << curr_list << '\n';
+        // add 5 nodes
+        for (auto n = 0; n < 5; ++n) {
+            rotate_list.appendNode(n);
+        }
+        std::cout << "Current list before rotation:\n";
+        curr_list = rotate_list.getList();
+        std::cout << curr_list << '\n';
+        curr_list = rotate_list.rotateRight(curr_list, 2);
+        std::cout << "Current list after rotation:\n";
+        std::cout << curr_list << '\n';
+
+        rotate_list.deleteList();
+        // add 3 nodes
+        for (auto n = 0; n < 3; ++n) {
+            rotate_list.appendNode(n);
+        }
+        std::cout << "Current list before rotation:\n";
+        curr_list = rotate_list.getList();
+        std::cout << curr_list << '\n';
+        curr_list = rotate_list.rotateRight(curr_list, 4);
+        std::cout << "Current list after rotation:\n";
+        std::cout << curr_list << '\n';
+
+        rotate_list.deleteList();
+        // add 2 nodes
+        for (auto n = 1; n <= 2; ++n) {
+            rotate_list.appendNode(n);
+        }
+        std::cout << "Current list before rotation:\n";
+        curr_list = rotate_list.getList();
+        std::cout << curr_list << '\n';
+        curr_list = rotate_list.rotateRight(curr_list, 3);
+        std::cout << "Current list after rotation:\n";
+        std::cout << curr_list << '\n';
+
+        rotate_list.setList(curr_list);
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << '\n';
+        std::cout << "Solution 98:\n";
+        constexpr long MIN = static_cast<long>(std::numeric_limits<int>::min()) - 1;
+        ValidBST valid_bst;
+
+        std::vector<long> v{5, 1, 4, MIN, MIN, 3, 6};
+        auto root = valid_bst.buildTree(v);
+        std::cout << '\n';
+        (valid_bst.isValidBST(root)) ? std::cout << "VALID\n" : std::cout << "INVALID\n";
+        valid_bst.deleteTree(root);
+        std::cout << '\n';        
+        
+        v = {2, 1, 3};
+        root = valid_bst.buildTree(v);
+        std::cout << '\n';
+        (valid_bst.isValidBST(root)) ? std::cout << "VALID\n" : std::cout << "INVALID\n";
+        valid_bst.deleteTree(root);
+        std::cout << '\n';
+        
+        v = {5, 4, 6, MIN, MIN, 3, 7};
+        root = valid_bst.buildTree(v);
+        std::cout << '\n';
+        (valid_bst.isValidBST(root)) ? std::cout << "VALID\n" : std::cout << "INVALID\n";
+        valid_bst.deleteTree(root);
+        std::cout << '\n';
+    }
     return 0;
 }
