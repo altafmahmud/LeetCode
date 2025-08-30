@@ -668,5 +668,34 @@ int main()
         valid_bst.deleteTree(root);
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 19:\n";
+        RemoveNthNodeFromEndOfList remNthNode;
+        
+        std::vector<unsigned short> v{1, 2, 3, 4, 5};
+        auto head = remNthNode.buildList(v);
+        std::cout << head << '\n';
+        head = remNthNode.removeNthFromEnd(head, 2);
+        std::cout << head << '\n';
+        head = remNthNode.deleteList(head);
+        std::cout << head << '\n';
+
+        v = {1};
+        head = remNthNode.buildList(v);
+        std::cout << head << '\n';
+        head = remNthNode.removeNthFromEnd(head, 1);
+        std::cout << head << '\n';
+        head = remNthNode.deleteList(head);
+        std::cout << head << '\n';
+
+        v = {1, 2};
+        head = remNthNode.buildList(v);
+        std::cout << head << '\n';
+        head = remNthNode.removeNthFromEnd(head, 1);
+        std::cout << head << '\n';
+        head = remNthNode.deleteList(head);
+        std::cout << head << '\n';        
+    }
     return 0;
 }
