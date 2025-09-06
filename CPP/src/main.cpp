@@ -697,5 +697,104 @@ int main()
         head = remNthNode.deleteList(head);
         std::cout << head << '\n';        
     }
+
+    {
+        std::cout << "Solution 1721:\n";
+        SwapNodesInLinkedList swap_nodes;
+        std::vector<unsigned short> v{1, 2, 3, 4, 5};
+        auto head = swap_nodes.buildList(v);
+        std::cout << head << '\n';
+        head = swap_nodes.swapNodes(head, 2);
+        std::cout << head << '\n';
+        head = swap_nodes.deleteList(head);
+        std::cout << head << '\n';
+
+        v = {7, 9, 6, 6, 7, 8, 3, 0, 9, 5};
+        head = swap_nodes.buildList(v);
+        std::cout << head << '\n';
+        head = swap_nodes.swapNodes(head, 5);
+        std::cout << head << '\n';
+        head = swap_nodes.deleteList(head);
+        std::cout << head << '\n';
+
+        v = {1, 2, 3};
+        head = swap_nodes.buildList(v);
+        std::cout << head << '\n';
+        head = swap_nodes.swapNodes(head, 2);
+        std::cout << head << '\n';
+        head = swap_nodes.deleteList(head);
+        std::cout << head << '\n';        
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 21:\n";
+        MergeTwoSortedList merge_two_sorted_list;
+
+        std::cout << "Test case: 1\n";
+        std::vector<short> v1{1, 2, 4};
+        std::vector<short> v2{1, 3, 4};
+        auto list1 = merge_two_sorted_list.buildList(v1);
+        std::cout << "List1: " << list1 << '\n';
+        auto list2 = merge_two_sorted_list.buildList(v2);
+        std::cout << "List2: " << list2 << '\n';
+        list2 = merge_two_sorted_list.mergeTwoLists(list1, list2);
+        std::cout << "Merged list: " << list2 << '\n';
+        list2 = merge_two_sorted_list.deleteList(list2);
+        std::cout << "Merged list after deletion: " << list2 << '\n';
+        std::cout << list2 << '\n';
+
+        std::cout << "Test case: 2\n";
+        v1.clear();
+        v2 = {0};
+        list1 = merge_two_sorted_list.buildList(v1);
+        std::cout << "List1: " << list1 << '\n';
+        list2 = merge_two_sorted_list.buildList(v2);
+        std::cout << "List2: " << list2 << '\n';
+        list2 = merge_two_sorted_list.mergeTwoLists(list1, list2);
+        std::cout << "Merged list: " << list2 << '\n';
+        list2 = merge_two_sorted_list.deleteList(list2);
+        std::cout << "Merged list after deletion: " << list2 << '\n';
+        std::cout << list2 << '\n';
+        
+        std::cout << "Test case: 3\n";
+        v1 = {7, 8, 9};
+        v2 = {1, 4, 5};
+        list1 = merge_two_sorted_list.buildList(v1);
+        std::cout << "List1: " << list1 << '\n';
+        list2 = merge_two_sorted_list.buildList(v2);
+        std::cout << "List2: " << list2 << '\n';
+        list2 = merge_two_sorted_list.mergeTwoLists(list1, list2);
+        std::cout << "Merged list: " << list2 << '\n';
+        list2 = merge_two_sorted_list.deleteList(list2);
+        std::cout << "Merged list after deletion: " << list2 << '\n';
+        std::cout << list2 << '\n';
+
+        std::cout << "Test case: 4\n";
+        v1.clear();
+        v2.clear();
+        list1 = merge_two_sorted_list.buildList(v1);
+        std::cout << "List1: " << list1 << '\n';
+        list2 = merge_two_sorted_list.buildList(v2);
+        std::cout << "List2: " << list2 << '\n';
+        list2 = merge_two_sorted_list.mergeTwoLists(list1, list2);
+        std::cout << "Merged list: " << list2 << '\n';
+        list2 = merge_two_sorted_list.deleteList(list2);
+        std::cout << "Merged list after deletion: " << list2 << '\n';
+        std::cout << list2 << '\n';
+        
+        std::cout << "Test case: 5\n";
+        v1 = {-9, 3};
+        v2 = {5, 7};
+        list1 = merge_two_sorted_list.buildList(v1);
+        std::cout << "List1: " << list1 << '\n';
+        list2 = merge_two_sorted_list.buildList(v2);
+        std::cout << "List2: " << list2 << '\n';
+        list2 = merge_two_sorted_list.mergeTwoLists(list1, list2);
+        std::cout << "Merged list: " << list2 << '\n';
+        list2 = merge_two_sorted_list.deleteList(list2);
+        std::cout << "Merged list after deletion: " << list2 << '\n';
+        std::cout << list2 << '\n';           
+    }
     return 0;
 }
