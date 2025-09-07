@@ -796,5 +796,37 @@ int main()
         std::cout << "Merged list after deletion: " << list2 << '\n';
         std::cout << list2 << '\n';           
     }
+
+    {
+        std::cout << "Solution 23:\n";
+        MergeKSortedList merge_k_sorted_list;
+
+        std::cout << "Test case 1:\n";
+        std::vector<std::vector<int>> data{{1, 4, 5}, {1, 3, 4}, {2, 6}};
+        auto list_nodes = merge_k_sorted_list.buildLists(data);
+        merge_k_sorted_list.printNodeLists(list_nodes);
+        auto list_node = merge_k_sorted_list.mergeKLists(list_nodes);
+        std::cout << "Merged list: " << list_node << '\n';
+        list_node = merge_k_sorted_list.deleteList(list_node);
+        std::cout << "Deleted merged list: " << list_node << '\n';
+
+        std::cout << "Test case 2:\n";
+        data.clear();
+        list_nodes = merge_k_sorted_list.buildLists(data);
+        merge_k_sorted_list.printNodeLists(list_nodes);
+        list_node = merge_k_sorted_list.mergeKLists(list_nodes);
+        std::cout << "Merged list: " << list_node << '\n';
+        list_node = merge_k_sorted_list.deleteList(list_node);
+        std::cout << "Deleted merged list: " << list_node << '\n';
+
+        std::cout << "Test case 2:\n";
+        data = {{1, 4, 5}, {1, 3, 4}, {2, 6}, {0, 9}};
+        list_nodes = merge_k_sorted_list.buildLists(data);
+        merge_k_sorted_list.printNodeLists(list_nodes);
+        list_node = merge_k_sorted_list.mergeKLists(list_nodes);
+        std::cout << "Merged list: " << list_node << '\n';
+        list_node = merge_k_sorted_list.deleteList(list_node);
+        std::cout << "Deleted merged list: " << list_node << '\n';        
+    }
     return 0;
 }
