@@ -826,7 +826,57 @@ int main()
         list_node = merge_k_sorted_list.mergeKLists(list_nodes);
         std::cout << "Merged list: " << list_node << '\n';
         list_node = merge_k_sorted_list.deleteList(list_node);
-        std::cout << "Deleted merged list: " << list_node << '\n';        
+        std::cout << "Deleted merged list: " << list_node << '\n';
     }
+
+    {
+        std::cout << "Solution 1114:\n";
+        PrintInOrder::Foo foo;
+        std::cout << "Case 1:\n";
+        std::vector<unsigned short> v{3, 1, 2};
+        std::thread t1 = PrintInOrder::createThread(v[0], std::ref(foo));
+        std::thread t2 = PrintInOrder::createThread(v[1], std::ref(foo));
+        std::thread t3 = PrintInOrder::createThread(v[2], std::ref(foo));
+        t1.join();
+        t2.join();
+        t3.join();
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 1115:\n";
+        PrintFooBarAlt::FooBar foo_bar(4);
+        std::thread t1(&PrintFooBarAlt::FooBar::foo, std::ref(foo_bar), PrintFooBarAlt::printFoo);
+        std::thread t2(&PrintFooBarAlt::FooBar::bar, std::ref(foo_bar), PrintFooBarAlt::printBar);
+        t1.join();
+        t2.join();
+        std::cout << '\n';
+    }
+    
+    {
+        std::cout << "Solution 1116:\n";
+        PrintZeroEvenOdd::ZeroEvenOdd zero_even_odd(25);
+        std::thread t1(&PrintZeroEvenOdd::ZeroEvenOdd::zero, std::ref(zero_even_odd), PrintZeroEvenOdd::printNumber);
+        std::thread t2(&PrintZeroEvenOdd::ZeroEvenOdd::even, std::ref(zero_even_odd), PrintZeroEvenOdd::printNumber);
+        std::thread t3(&PrintZeroEvenOdd::ZeroEvenOdd::odd, std::ref(zero_even_odd), PrintZeroEvenOdd::printNumber);
+        t1.join();
+        t2.join();
+        t3.join();
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 1195:\n";
+        FizzBuzzMultithreaded::FizzBuzz fizz_buzz_mul(15);
+        std::thread tA(&FizzBuzzMultithreaded::FizzBuzz::fizz, std::ref(fizz_buzz_mul), FizzBuzzMultithreaded::printFizz);
+        std::thread tB(&FizzBuzzMultithreaded::FizzBuzz::buzz, std::ref(fizz_buzz_mul), FizzBuzzMultithreaded::printBuzz);
+        std::thread tC(&FizzBuzzMultithreaded::FizzBuzz::fizzbuzz, std::ref(fizz_buzz_mul), FizzBuzzMultithreaded::printFizzBuzz);
+        std::thread tD(&FizzBuzzMultithreaded::FizzBuzz::number, std::ref(fizz_buzz_mul), FizzBuzzMultithreaded::printNumber);
+        tA.join();
+        tB.join();
+        tC.join();
+        tD.join();
+        std::cout << '\n';
+    }    
     return 0;
 }
