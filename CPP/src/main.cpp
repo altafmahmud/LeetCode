@@ -877,6 +877,19 @@ int main()
         tC.join();
         tD.join();
         std::cout << '\n';
-    }    
+    }
+
+    {
+        std::cout << "Solution 25:\n";
+        ReverseNodesInKGroup::RevNodesKGrp rev_k;
+        std::vector<int> v{1, 2, 3, 4, 5};
+        auto head = rev_k.buildList(v);
+        std::cout << "List:\n" << head << '\n';
+        int k = 1;
+        head = rev_k.reverseKGroup(head, k);
+        std::cout << "Reversed nodes in " << k << " group:\n" << head << '\n';
+        head = rev_k.deleteList(head);
+        std::cout << "Deleted list:\n" << head << '\n';
+    }
     return 0;
 }
