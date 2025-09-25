@@ -891,5 +891,31 @@ int main()
         head = rev_k.deleteList(head);
         std::cout << "Deleted list:\n" << head << '\n';
     }
+
+    {
+        std::cout << "Solution 35:\n";
+        SearchInsertPos sip;
+        std::vector<int> v{1, 3, 5, 6};
+        std::cout << sip.searchInsert(v, 5) << '\n';
+        std::cout << sip.searchInsert(v, 2) << '\n';
+        std::cout << sip.searchInsert(v, 7) << '\n';
+    }
+
+    {
+        std::cout << "Solution 41:\n";
+        FirstMissingPositive fmp;
+        // FirstMissingPositiveTop fmp;
+        std::vector<int> v{1, 2, 0};
+        std::cout << fmp.firstMissingPositive(v) << '\n';
+        v = {3, 4, -1, 1};
+        std::cout << fmp.firstMissingPositive(v) << '\n';
+        v = {7, 8, 9, 11, 12};
+        std::cout << fmp.firstMissingPositive(v) << '\n';
+        v = {3, 4, -1, -2, 1, 5, 16, 0, 2, 0};
+        std::cout << fmp.firstMissingPositive(v) << '\n';
+        v = {1, 2, 3, 4, 5, 6, 7, 8, 9, -10};
+        std::cout << fmp.firstMissingPositive(v) << '\n';
+        std::cout << '\n';
+    }    
     return 0;
 }

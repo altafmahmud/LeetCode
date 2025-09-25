@@ -20,6 +20,8 @@
 #include "29.hpp"
 #include "33.hpp"
 #include "34.hpp"
+#include "35.hpp"
+#include "41.hpp"
 #include "61.hpp"
 #include "81.hpp"
 #include "98.hpp"
