@@ -916,6 +916,74 @@ int main()
         v = {1, 2, 3, 4, 5, 6, 7, 8, 9, -10};
         std::cout << fmp.firstMissingPositive(v) << '\n';
         std::cout << '\n';
-    }    
+    }
+
+    {
+        std::cout << "Solution 53:\n";
+        MaxSubArr max_sub_arr;
+        std::vector<int> v{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        std::cout << max_sub_arr.maxSubArray(v) << '\n';
+        v = {1};
+        std::cout << max_sub_arr.maxSubArray(v) << '\n';
+        v = {-1};
+        std::cout << max_sub_arr.maxSubArray(v) << '\n';
+        v = {5, 4, -1, 7, 8};
+        std::cout << max_sub_arr.maxSubArray(v) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 31:\n";
+        NextPermutation next_perm;
+        Utility util;
+        std::vector<int> v{1, 2, 3};
+        next_perm.nextPermutation(v);
+        util.printVecWithDelim(v, '[', ']');
+        v = {3, 2, 1};
+        next_perm.nextPermutation(v);
+        util.printVecWithDelim(v, '[', ']');
+        v = {1, 1, 5};
+        next_perm.nextPermutation(v);
+        util.printVecWithDelim(v, '[', ']');
+        v = {1, 2, 4, 9, 8, 7, 6, 5, 3};
+        next_perm.nextPermutation(v);
+        util.printVecWithDelim(v, '[', ']');
+        v = {1, 1, 1};
+        next_perm.nextPermutation(v);
+        util.printVecWithDelim(v, '[', ']');
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 46:\n";
+        Permutations perm;
+        Utility util;
+        std::cout << "3 elements:\n";
+        std::vector<int> v{1, 2, 3};
+        auto res = perm.permute(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "2 elements:\n";
+        v = {0, 1};
+        res = perm.permute(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "1 element:\n";
+        v = {1};
+        res = perm.permute(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "6 elements:\n";
+        v = {1, 2, 3, 4, 5, 6};
+        res = perm.permute(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << '\n';
+    }
+
     return 0;
 }
