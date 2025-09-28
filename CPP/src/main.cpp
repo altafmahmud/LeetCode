@@ -985,5 +985,25 @@ int main()
         std::cout << '\n';
     }
 
+    {
+        std::cout << "Solution 74:\n";
+        Search2DMat search_mat;
+        std::vector<std::vector<int>> v2d {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        auto res = search_mat.searchMatrix(v2d, 3);
+        res ? std::cout << "TRUE\n" : std::cout << "FALSE\n";
+        res = search_mat.searchMatrix(v2d, 13);
+        res ? std::cout << "TRUE\n" : std::cout << "FALSE\n";
+        v2d = {{1}};
+        res = search_mat.searchMatrix(v2d, 1);
+        res ? std::cout << "TRUE\n" : std::cout << "FALSE\n";
+        v2d = {{1, 1}};
+        res = search_mat.searchMatrix(v2d, 0);
+        res ? std::cout << "TRUE\n" : std::cout << "FALSE\n";
+        v2d = {{1}, {3}};
+        res = search_mat.searchMatrix(v2d, 3);
+        res ? std::cout << "TRUE\n" : std::cout << "FALSE\n";        
+        std::cout << '\n';
+    }
+
     return 0;
 }
