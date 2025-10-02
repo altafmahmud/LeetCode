@@ -1096,7 +1096,35 @@ int main()
         lst = sw_pair.buildList(v);
         std::cout << "List 03:\n" << lst << '\n';
         std::cout << "Swapped list 03:\n" << sw_pair.swapPairs(lst) << '\n';
-        sw_pair.deleteList(lst);        
+        sw_pair.deleteList(lst);
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 82:\n";
+        RemDupSortedLst rem;
+        std::vector<int> v{1, 2, 3, 3, 4, 4, 5};
+        auto lst = rem.buildList(v);
+        std::cout << "List01:\n" << lst << '\n';
+        lst = rem.deleteDuplicates(lst);
+        std::cout << "Removed duplicates list01:\n" << lst << '\n';
+        rem.deleteList(lst);
+        v = {1, 1, 1, 2, 3};
+        lst = rem.buildList(v);
+        std::cout << "List01:\n" << lst << '\n';
+        lst = rem.deleteDuplicates(lst);
+        std::cout << "Removed duplicates list01:\n" << lst << '\n';
+        rem.deleteList(lst);        
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 58:\n";
+        LenOfLastWord len;
+        std::cout << len.lengthOfLastWord("Hello World") << '\n';
+        std::cout << len.lengthOfLastWord("   fly me   to   the moon  ") << '\n';
+        std::cout << len.lengthOfLastWord("luffy is still joyboy") << '\n';
+        std::cout << '\n';
     }
 
     return 0;
