@@ -1005,5 +1005,99 @@ int main()
         std::cout << '\n';
     }
 
+    {
+        std::cout << "Solution 153:\n";
+        FindMinRotSortArr find_min;
+        std::vector<int> v{4, 5, 6, 7, 0, 1, 2};
+        std::cout << find_min.findMin(v) << '\n';
+        v = {11, 13, 15, 17};
+        std::cout << find_min.findMin(v) << '\n';
+        v = {1};
+        std::cout << find_min.findMin(v) << '\n';        
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 154:\n";
+        FindMinRotSortArrII find_minII;
+        std::vector<int> v{4, 5, 6, 7, 0, 1, 4};
+        std::cout << find_minII.findMin(v) << '\n';
+        v = {0, 1, 4, 4, 5, 6, 7};
+        std::cout << find_minII.findMin(v) << '\n';
+        v = {2, 2, 2, 0, 1};
+        std::cout << find_minII.findMin(v) << '\n';
+        v = {2, 2, 1, 2, 2};
+        std::cout << find_minII.findMin(v) << '\n';        
+        v = {2, 2, 2, 2, 2};
+        std::cout << find_minII.findMin(v) << '\n';
+        v = {3, 1};
+        std::cout << find_minII.findMin(v) << '\n';
+        v = {1};
+        std::cout << find_minII.findMin(v) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 47:\n";
+        PermutationsII permII;
+        Utility util;
+        std::cout << "3 elements:\n";
+        std::vector<int> v{1, 1, 2};
+        auto res = permII.permuteUnique(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "3 unique elements:\n";
+        v = {1, 2, 3};
+        res = permII.permuteUnique(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "6 elements:\n";
+        v = {1, 2, 2, 2, 3, 3};
+        res = permII.permuteUnique(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "6 distinct elements:\n";
+        v = {1, 2, 3, 4, 5, 6};
+        res = permII.permuteUnique(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << "1 element:\n";
+        v = {1};
+        res = permII.permuteUnique(v);
+        for (const auto& v : res) {
+            util.printVecWithDelim(v, '[', ']');
+        }
+        std::cout << '\n';        
+    }
+
+    {
+        std::cout << "Solution 24:\n";
+        SwapNodesInPair sw_pair;
+        std::vector<int> v{1, 2, 3, 4};
+        auto lst = sw_pair.buildList(v);
+        std::cout << "List 01:\n" << lst << '\n';
+        std::cout << "Swapped list 01:\n" << sw_pair.swapPairs(lst) << '\n';
+        sw_pair.deleteList(lst);
+        v = {1, 2, 3};
+        lst = sw_pair.buildList(v);
+        std::cout << "List 02:\n" << lst << '\n';
+        std::cout << "Swapped list 02:\n" << sw_pair.swapPairs(lst) << '\n';
+        sw_pair.deleteList(lst);
+        v = {1};
+        lst = sw_pair.buildList(v);
+        std::cout << "List 03:\n" << lst << '\n';
+        std::cout << "Swapped list 03:\n" << sw_pair.swapPairs(lst) << '\n';
+        sw_pair.deleteList(lst);
+        v.clear();
+        lst = sw_pair.buildList(v);
+        std::cout << "List 03:\n" << lst << '\n';
+        std::cout << "Swapped list 03:\n" << sw_pair.swapPairs(lst) << '\n';
+        sw_pair.deleteList(lst);        
+    }
+
     return 0;
 }
