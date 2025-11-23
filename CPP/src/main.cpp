@@ -1114,7 +1114,7 @@ int main()
         std::cout << "List01:\n" << lst << '\n';
         lst = rem.deleteDuplicates(lst);
         std::cout << "Removed duplicates list01:\n" << lst << '\n';
-        rem.deleteList(lst);        
+        rem.deleteList(lst);
         std::cout << '\n';
     }
 
@@ -1126,6 +1126,21 @@ int main()
         std::cout << len.lengthOfLastWord("luffy is still joyboy") << '\n';
         std::cout << '\n';
     }
+
+    {
+        std::cout << "Solution 70:\n";
+        ClimbStairs cs;
+        std::cout << cs.climbStairs(45) << '\n';
+        std::cout << '\n';
+    }
+
+    {
+        std::cout << "Solution 28:\n";
+        FirstOccurrenceInString fos;
+        std::cout << fos.strStr("sadbutsad", "sad") << '\n';
+        std::cout << fos.strStr("leetcode", "leeto") << '\n';
+        std::cout << '\n';
+    }    
 
     return 0;
 }
