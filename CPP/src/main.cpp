@@ -1140,7 +1140,24 @@ int main()
         std::cout << fos.strStr("sadbutsad", "sad") << '\n';
         std::cout << fos.strStr("leetcode", "leeto") << '\n';
         std::cout << '\n';
-    }    
+    }
+    
+    {
+        std::cout << "Solution 55:\n";
+        CanJump cj;
+        std::vector<int> nums = {2, 3, 1, 1, 4};
+        cj.canJump(nums) ? std::cout << "TRUE" : std::cout << "FALSE";
+        std::cout << '\n';
+        nums = {3, 2, 1, 0, 4};
+        cj.canJump(nums) ? std::cout << "TRUE" : std::cout << "FALSE";
+        std::cout << '\n';
+        nums = {0};
+        cj.canJump(nums) ? std::cout << "TRUE" : std::cout << "FALSE";
+        std::cout << '\n';
+        nums = {1};
+        cj.canJump(nums) ? std::cout << "TRUE" : std::cout << "FALSE";
+        std::cout << '\n';        
+    }
 
     return 0;
 }
